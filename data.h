@@ -9,4 +9,8 @@
         int id;
         string str;
     };
+    struct Vertex {
+        Data data;
+        vector<int> adjacent;
+    };
 #endif

@@ -22,7 +22,8 @@
             void breadthFirstTraversal(int);
             bool getVertex(int, Data*);
         protected:
-            int visited;
-            vector<vector<Data*>> adjacencyList;
+            vector<Vertex> vertices;
+            Vertex *findVertex(int);
+            int count;
     };
 #endif //GRAPH
