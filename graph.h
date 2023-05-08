@@ -22,7 +22,7 @@
             void breadthFirstTraversal(int);
             bool getVertex(int, Data*);
         protected:
-            vector<Vertex> vertices;
+            vector<Vertex*> vertices;
             Vertex *findVertex(int);
             int count;
     };
