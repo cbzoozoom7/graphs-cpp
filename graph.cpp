@@ -28,6 +28,18 @@ bool Graph::addEdge(int fromId, int toId) {
     }
     return added;
 }
+bool Graph::addVertex(int id, string *str) {
+    bool added = false;
+    if (!findVertex(id)) {
+        Vertex *newVertex = new Vertex;
+        newVertex->data.id = id;
+        newVertex->data.str = *str;
+        vertices.push_back(newVertex);
+        added = true;
+        count++;
+    }
+    return added;
+}
 Graph::~Graph() {
     clear();
 }
@@ -44,10 +56,6 @@ bool Graph::removeEdge(int fromId, int toId) {
 void Graph::clearDisconnected() {
 
 }
-bool Graph::addVertex(int id, string *str) {
-    bool added = false;
-    return added;
-}
 bool Graph::removeVertex(int id) {
     bool removed = false;
     return removed;
@@ -62,5 +70,5 @@ bool Graph::getVertex(int id, Data *d) {
     return false;
 }
 int Graph::getNumEdges() {
-    
+
 }
