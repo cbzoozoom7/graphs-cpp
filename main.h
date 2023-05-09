@@ -7,6 +7,7 @@
     #include <iostream>
     #include <stdlib.h>
     #include <time.h>
+    #include "functions.h"
     #include "graph.h"
     using std::cout;
     using std::endl;

@@ -23,6 +23,8 @@
             void depthFirstTraversal(int);
             void breadthFirstTraversal(int);
             bool getVertex(int, Data*);
+            bool isEmpty();
+            int getCount();
         protected:
             int count;
             vector<Vertex*> vertices;

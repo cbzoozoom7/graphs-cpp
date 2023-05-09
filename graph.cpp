@@ -60,7 +60,8 @@ void Graph::depthFirstTraversal(int startId) {
             visited.insert(current);
         }
         current = next.back();
-    } 
+    }
+    std::cout << std::endl;
 }
 void Graph::breadthFirstTraversal(int startId) {
     std::cout << "\nBreadth First Traversal:" << std::endl;
@@ -81,12 +82,20 @@ void Graph::breadthFirstTraversal(int startId) {
         }
         current = next.front();
     }
+    std::cout << std::endl;
+}
+bool Graph::isEmpty() {
+    return vertices.empty();
+}
+void Graph::clear() {
+    vertices.clear();
+    count = 0;
+}
+int Graph::getCount() {
+    return count;
 }
 Graph::~Graph() {
     clear();
-}
-void Graph::clear() {
-    
 }
 int Graph::getNumVertices() {
     return count;
