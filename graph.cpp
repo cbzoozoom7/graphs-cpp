@@ -97,8 +97,26 @@ int Graph::getCount() {
 Graph::~Graph() {
     clear();
 }
-int Graph::getNumVertices() {
-    return count;
+bool Graph::removeVertex(int id) {
+    bool removed = false;
+    Vertex *target = nullptr;
+    vector<Vertex*>::iterator i = vertices.begin();
+    while (!target && i < vertices.end()) {
+        if ((*i)->data.id == id) {
+            target = *i;
+            vertices.erase(i);
+        }
+        i++;
+    }
+    if (target) {
+        for (unordered_set<Vertex*>::iterator i = target->adjacent.begin(); i != target->adjacent.end(); i++) {
+            (*i)->adjacent.erase(target);
+        }
+        delete target;
+        removed = true;
+        count--;
+    }
+    return removed;
 }
 bool Graph::removeEdge(int fromId, int toId) {
     bool removed = false;
@@ -107,13 +125,6 @@ bool Graph::removeEdge(int fromId, int toId) {
 void Graph::clearDisconnected() {
 
 }
-bool Graph::removeVertex(int id) {
-    bool removed = false;
-    return removed;
-}
 bool Graph::getVertex(int id, Data *d) {
     return false;
-}
-int Graph::getNumEdges() {
-
 }

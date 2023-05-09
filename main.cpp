@@ -37,6 +37,15 @@ int main() {
     }
     myGraph.depthFirstTraversal(ids[rand() % testSize]);
     myGraph.breadthFirstTraversal(ids[rand() % testSize]);
+    for (int i = 0; i < testSize * RANDPERCENT; i++) { //remove 3 random vertices
+        int toRemove = ids[rand() % testSize];
+        cout << "Removing " << toRemove << "... ";
+        if (myGraph.removeVertex(toRemove)) {
+            cout << "Success." << endl;
+        } else {
+            cout << "Fail." << endl;
+        }
+    }
     isEmptyAndCount(&myGraph);
     cout << "Clearing... ";
     myGraph.clear();
