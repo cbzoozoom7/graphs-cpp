@@ -19,12 +19,14 @@ Vertex *Graph::findVertex(int id) {
 }
 bool Graph::addEdge(int fromId, int toId) {
     bool added = false;
-    Vertex *from = findVertex(fromId);
-    Vertex *to = findVertex(toId);
-    if (from && to) {
-        from->adjacent.push_back(to);
-        to->adjacent.push_back(from);
-        added = true;
+    if (fromId != toId) {
+        Vertex *from = findVertex(fromId);
+        Vertex *to = findVertex(toId);
+        if (from && to) {
+            if (from->adjacent.insert(to).second && to->adjacent.insert(from).second) {
+                added = true;
+            }
+        }
     }
     return added;
 }
@@ -39,6 +41,25 @@ bool Graph::addVertex(int id, string *str) {
         count++;
     }
     return added;
+}
+void Graph::depthFirstTraversal(int startId) {
+    std::cout << "\nDepth First Traversal:" << std::endl;
+    Vertex *current = findVertex(startId);
+    vector<Vertex*> next;
+    std::unordered_set<Vertex*> visited;
+    while (current) {
+        if (!visited.count(current)) {
+            std::cout << current->data.id << ": \"" << current->data.str << "\"" << std::endl;
+            for (unordered_set<Vertex*>::iterator i = current->adjacent.begin(); i != current->adjacent.end(); i++) {
+                if (!visited.count(*i)) {
+                    next.push_back(*i);
+                }
+            }
+            visited.insert(current);
+        }
+        current = next.back();
+        next.erase(next.end()-1);
+    }
 }
 Graph::~Graph() {
     clear();
@@ -59,9 +80,6 @@ void Graph::clearDisconnected() {
 bool Graph::removeVertex(int id) {
     bool removed = false;
     return removed;
-}
-void Graph::depthFirstTraversal(int startId) {
-
 }
 void Graph::breadthFirstTraversal(int startId) {
 

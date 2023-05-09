@@ -23,6 +23,18 @@ int main() {
             cout << "Fail." << endl;
         }
     }
-    myGraph.depthFirstTraversal(1);
+    srand(time(nullptr));
+    for (int i = 0; i < testSize * RANDPERCENT; i++) {
+        int edgeStart = ids[rand() % testSize];
+        int edgeEnd = ids[rand() % testSize];
+        cout << "Adding edge between " << edgeStart << " & " << edgeEnd << "... ";
+        if (myGraph.addEdge(edgeStart, edgeEnd)) {
+            cout << "Success." << endl;
+        } else {
+            cout << "Fail." << endl;
+        }
+    }
+    myGraph.depthFirstTraversal(ids[rand() % testSize]);
+    myGraph.breadthFirstTraversal(ids[rand() % testSize]);
     return 0;
 }

@@ -3,6 +3,8 @@
 //Created Sun 7 May 2023
 #ifndef GRAPH
     #define GRAPH
+    #include <iostream>
+    #include <unordered_set>
     #include <vector>
     #include "data.h"
     using std::vector;
@@ -22,8 +24,8 @@
             void breadthFirstTraversal(int);
             bool getVertex(int, Data*);
         protected:
+            int count;
             vector<Vertex*> vertices;
             Vertex *findVertex(int);
-            int count;
     };
 #endif //GRAPH

@@ -4,15 +4,15 @@
 #ifndef DATA_STRUCT
     #define DATA_STRUCT
     #include <string>
-    #include <vector>
+    #include <unordered_set>
     using std::string;
-    using std::vector;
+    using std::unordered_set;
     struct Data {
         int id;
         string str;
     };
     struct Vertex {
         Data data;
-        vector<Vertex*> adjacent;
+        unordered_set<Vertex*> adjacent;
     };
 #endif
