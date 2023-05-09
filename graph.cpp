@@ -120,6 +120,11 @@ bool Graph::removeVertex(int id) {
 }
 bool Graph::removeEdge(int fromId, int toId) {
     bool removed = false;
+    Vertex *from = findVertex(fromId);
+    Vertex *to = findVertex(toId);
+    if (from && to) {
+        removed = (from->adjacent.erase(to) && to->adjacent.erase(from));
+    }
     return removed;
 }
 void Graph::clearDisconnected() {

@@ -37,6 +37,17 @@ int main() {
     }
     myGraph.depthFirstTraversal(ids[rand() % testSize]);
     myGraph.breadthFirstTraversal(ids[rand() % testSize]);
+    for (int i = 0; i < testSize * RANDPERCENT; i++) { //remove 3 random edges between pairs of numerically adjacent ids
+        int toRemove = rand() % (testSize - 1);
+        int edgeStart = ids[toRemove];
+        int edgeEnd = ids[toRemove + 1];
+        cout << "Removing edge between " << edgeStart << " & " << edgeEnd << "... ";
+        if (myGraph.removeEdge(edgeStart, edgeEnd)) {
+            cout << "Success." << endl;
+        } else {
+            cout << "Fail." << endl;
+        }
+    }
     for (int i = 0; i < testSize * RANDPERCENT; i++) { //remove 3 random vertices
         int toRemove = ids[rand() % testSize];
         cout << "Removing " << toRemove << "... ";
