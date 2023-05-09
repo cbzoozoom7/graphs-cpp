@@ -88,6 +88,9 @@ bool Graph::isEmpty() {
     return vertices.empty();
 }
 void Graph::clear() {
+    for (vector<Vertex*>::iterator i = vertices.begin(); i < vertices.end(); i++) {
+        delete *i;
+    }
     vertices.clear();
     count = 0;
 }
