@@ -13,8 +13,6 @@
             Graph();
             ~Graph();
             void clear();
-            int getNumVertices();
-            int getNumEdges();
             bool addEdge(int, int);
             bool removeEdge(int, int);
             void clearDisconnected();

@@ -130,9 +130,17 @@ bool Graph::removeEdge(int fromId, int toId) {
     }
     return removed;
 }
+bool Graph::getVertex(int id, Data *d) {
+    Vertex *v = findVertex(id);
+        if (v) {
+            d->id = v->data.id;
+            d->str = v->data.str;
+        } else {
+            d->id = -1;
+            d->str = "";
+        }
+    return v;
+}
 void Graph::clearDisconnected() {
 
-}
-bool Graph::getVertex(int id, Data *d) {
-    return false;
 }
