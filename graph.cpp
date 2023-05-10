@@ -144,8 +144,8 @@ bool Graph::getVertex(int id, Data *d) {
 void Graph::clearDisconnected() {
     for (vector<Vertex*>::iterator i = vertices.begin(); i < vertices.end(); i++) {
         if ((*i)->adjacent.empty()) {
-            vertices.erase(i);
             delete *i;
+            vertices.erase(i);
         }
     }
 }
